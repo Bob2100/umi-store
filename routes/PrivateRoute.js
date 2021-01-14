@@ -2,9 +2,7 @@ import Redirect from "umi/redirect";
 
 
 export default props => {
-  if (Math.random() > 0.5) {
-    console.log(props);
-
+  if (!localStorage.getItem('userInfo')) {
     return (
       <Redirect
         to={{
@@ -16,7 +14,6 @@ export default props => {
   }
   return (
     <div>
-      <div>PrivateRoute (routes/PrivateRoute.js)</div>
       {props.children}
     </div>
   );

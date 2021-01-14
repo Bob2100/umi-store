@@ -9,7 +9,7 @@ export default {
   //   result: data
   // },
   // "method url": (req, res) => {}
-  "get /api/goods": function(req, res, next) {
+  "get /api/goods": function (req, res, next) {
     setTimeout(() => {
       res.json({
         result: data

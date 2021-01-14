@@ -1,14 +1,16 @@
 import { Component } from 'react';
 import styles from './login.css';
-import router from 'umi/router';
 import { Login } from "ant-design-pro";
+import { connect } from 'dva';
 
 const { UserName, Password, Submit } = Login;
 
+@connect()
 export default class extends Component {
-  onSubmit(err, values) {
+  onSubmit = async (err, values) => {
     if (!err) {
       // 提交表单
+      this.props.dispatch({ type: 'user/login', payload: values });
     }
   }
   render() {
