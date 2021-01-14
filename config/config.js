@@ -12,8 +12,7 @@ export default {
     { path: "/login", component: "./login" },
     {
       path: "/", component: "../layouts", routes: [
-        { path: "/", component: "./index" },
-        { path: "/goods", component: "./goods/index" },
+        { path: "/", component: "./goods/index" },
         {
           path: "/about",
           component: "./about",
