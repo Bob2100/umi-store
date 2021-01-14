@@ -6,18 +6,19 @@ const { Header, Content, Footer } = Layout;
 const { Item } = Menu;
 
 export default function (props) {
+  const selectedKeys = [props.location.pathname];
   return (
     <Layout>
       <Header className={styles.header}>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '64px' }}>
+        <Menu theme="dark" mode="horizontal" selectedKeys={selectedKeys} style={{ lineHeight: '64px' }}>
           <img src="https://img.kaikeba.com/logo-new.png" className={styles.logo} />
-          <Item key='1'>
+          <Item key='/'>
             <Link to={'/'}>商品</Link>
           </Item>
-          <Item key='2'>
+          <Item key='/users'>
             <Link to={'/users'}>用户</Link>
           </Item>
-          <Item key='3'>
+          <Item key='/about'>
             <Link to={'/about'}>关于</Link>
           </Item>
         </Menu>
