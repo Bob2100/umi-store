@@ -1,14 +1,26 @@
-import { Button } from 'antd'
+import { Component } from 'react';
 import styles from './login.css';
 import router from 'umi/router';
+import { Login } from "ant-design-pro";
 
-export default function (props) {
-  let from = props.location.state.from || "/"; // 重定向地址
+const { UserName, Password, Submit } = Login;
 
-  return (
-    <div className={styles.normal}>
-      <h1>Page login</h1>
-      <Button onClick={() => router.push(from)}>登录</Button>
-    </div>
-  );
+export default class extends Component {
+  onSubmit(err, values) {
+    if (!err) {
+      // 提交表单
+    }
+  }
+  render() {
+    return (
+      <div className={styles.loginForm}>
+        <img className={styles.logo} src="/course/logo.png" />
+        <Login onSubmit={this.onSubmit}>
+          <UserName name="username" placeholder="kaikeba" rules={[{ required: true, message: "请输入用户名" }]} />
+          <Password name="password" placeholder="123" rules={[{ required: true, message: "请输入密码" }]} />
+          <Submit>登录</Submit>
+        </Login>
+      </div>
+    );
+  }
 }

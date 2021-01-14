@@ -1,4 +1,7 @@
-
-.normal {
-  background: #EC79F2;
+.logo {
+  margin-bottom: 30px;
+}
+.loginForm {
+  width: 50%;
+  margin: 100px auto;
 }
