@@ -11,7 +11,7 @@ export default function (props) {
     <Layout>
       <Header className={styles.header}>
         <Menu theme="dark" mode="horizontal" selectedKeys={selectedKeys} style={{ lineHeight: '64px' }}>
-          <img src="https://img.kaikeba.com/logo-new.png" className={styles.logo} />
+          <img src="/course/logo.png" className={styles.logo} />
           <Item key='/'>
             <Link to={'/'}>商品</Link>
           </Item>
