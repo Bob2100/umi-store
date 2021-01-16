@@ -22,7 +22,7 @@ export default {
         }
       });
     } else {
-      response.json({
+      response.status(401).json({
         code: -1,
         msg: '用户名或密码错误'
       });
