@@ -8,7 +8,7 @@ const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {
 }
 
 function login(userInfo) {
-  return Axios.post('/api/login', userInfo);
+  return Axios.post('/api/login', userInfo).then(response => response.data.data);
 }
 
 export default {
@@ -16,13 +16,15 @@ export default {
   state: userInfo,
   effects: {
     *login(action, { call, put }) {
-      const { data: { code, data: userInfo } } = yield call(login, action.payload);
-      if (code === 0) {
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        yield put({ type: 'init', payload: userInfo });
-        alert('登录成功');
-      } else {
-        alert('登录失败');
+      try {
+        const userInfo = yield call(login, action.payload);
+        if (code === 0) {
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
+          yield put({ type: 'init', payload: userInfo });
+          alert('登录成功');
+        }
+      } catch (error) {
+        // 登录失败
       }
     }
   },
