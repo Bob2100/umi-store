@@ -1,26 +1,26 @@
 import axios from 'axios';
 
 // api
-function getGoods(){
+function getGoods() {
   return axios.get('/api/goods')
 }
 
 export default {
   namespace: "goods",
-  state: [],
+  state: {
+    courses: {},
+    tags: []
+  },
   effects: {
-    *getList(action, {call, put}){           
-      const res = yield call(getGoods)
-      yield put({ type: 'initGoods', payload: res.data.result })
+    *getList(action, { call, put }) {
+      const { data: { data: courseData } } = yield call(getGoods)
+      yield put({ type: 'initGoods', payload: courseData })
     }
   },
   reducers: {
-    initGoods(state,{payload}){
-      return payload
-    },
-    addGood(state, action) {
-      console.log(action);
-      return [...state, { title: action.payload.title }];
+    initGoods(state, { payload }) {
+      const { tags, data: courses } = payload;
+      return { ...state, tags, courses };
     }
   }
 };
